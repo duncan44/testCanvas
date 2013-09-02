@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bibli.js"></script>
+	<STYLE TYPE="text/css">
+	@keyframes mymove
+	{
+		from {-webkit-transform:rotateY(0deg);}
+		to {-webkit-transform:rotateY(359deg)}
+	}
+	</STYLE>
+</head>
+<body style='overflow:hidden;background:#fff'>
+	<div id="position" style="position:absolute;top:0;left:0px;"></div>
+	
+	<div id="map" style="display:block;position:absolute;top:10px;left:10px;height:100px;width:100px;border:1px solid black;z-index:997;background:#000;border-radius:50px;overflow:show">
+		<span id="moi" style="display:block;position:absolute;top:50px;left:50px;height:2px;width:2px;z-index:999;background:#FF0" ></span>
+		<div id='content_map' style='width:100%;height:100%;text-align:center;color:#fff;border:1px solid black;'>	
+			<b>N</b>		
+		</div>
+	</div>
+	<div id="canvas"></div>
+	<script type="text/javascript">
+		m3D.init($("#canvas"));
+		arbre = new Array();
+		id= 0;
+
+		function tue_un_arbre(){
+			arbre.sort(function(){return Math.round(Math.random());});
+			i = arbre.pop();
+			$("#el"+i).remove();
+			$("#mapel"+i).remove();
+
+		}
+
+		function plante_un_arbre(){
+			id++;
+			m3D.addItem("el"+(id),"100","50",(m3D.map.width-(Math.random()*m3D.map.width) )* 1,0,(m3D.map.height-(Math.random()*m3D.map.height) ) * -1  );
+			arbre.push(id);
+			if(id>50) tue_un_arbre();
+			window.setTimeout(plante_un_arbre,1000);
+
+		}
+		for (var i = 0; i <= 50; i++) {
+			m3D.addItem("el"+i,"100","50",(10000-(Math.random()*10000) )* 1,0,(10000-(Math.random()*10000) ) * -1  );
+		};
+		// m3D.addItem("el1","100","100",300,0,0);
+		// m3D.addItem("el2","100","100",500,0,0);
+		// m3D.addItem("el3","100","100",300,200,0);
+		// m3D.addItem("el4","100","100",300,0,-200);
+		m3D.startGame();
+
+		// plante_un_arbre();
+	</script>
+</body>
+</html>

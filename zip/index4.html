@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bibli2.js"></script>
+	<STYLE TYPE="text/css">	
+	div{
+		border-radius: inherit;
+		z-index:0;
+		-webkit-transform-style:preserve-3d;
+	}
+	#canvas{
+		position:absolute;
+		top:0px;
+		left: 0px;
+		display:block;
+		height:100%;
+		width:100%;
+		-webkit-perspective:1000;
+		-webkit-transform-style:preserve-3d;
+	}
+	#canvas #plan{
+		position:absolute;
+		top:0px;
+		left: 0px;
+		display:block;
+		height:100%;
+		width:100%;
+		/*-webkit-perspective:100;*/
+		-webkit-transform-style:preserve-3d;
+		-webkit-transform:translate3d(-5000px,0,-5000px);
+	}
+
+	#map{
+		position:absolute;
+		top:20px;
+		left: 20px;
+		display:block;
+		height:100px;
+		width:100px;
+		/*-webkit-perspective:100;*/
+		-webkit-transform-style:preserve-3d;
+		/*border:1px solid black;*/
+		/*border-radius: 250px;*/
+		z-index:7;
+		/*overflow: hidden;*/
+	}
+	#boussole{
+		position:absolute;
+		top:0px;
+		left: 0px;
+		display:block;
+		height:140px;
+		width:140px;
+		/*overflow: hidden;*/
+		border:1px solid black;
+		border-radius: 70px;
+	}
+	</STYLE>
+</head>
+<body style='overflow:hidden;background:#fff'>
+	<div id="boussole">
+		<span style="position:absolute;left:65px;top:0;">N</span>
+		<span style="position:absolute;left:65px;top:120px;">S</span>
+		<span style="position:absolute;left:125px;top:60px;">E</span>
+		<span style="position:absolute;left:5px;top:60px;">O</span>
+	</div>
+	<div id="map"></div>
+	<div id="canvas"></div>
+	<script type="text/javascript">
+	id = 0;
+	element = Array();
+	for (var i = 0; i < 1000; i++) {
+			// m3D.addItem("el"+i,"100","50",(10000-(Math.random()*10000) )* 1,0,(10000-(Math.random()*10000) ) * -1  );
+			el_temp = new Element3D("el"+i);
+			el_temp.place( Math.random()*100000,window.innerHeight/2, Math.random()*100000);
+			element.push(el_temp);
+	};
+
+		function tue_un_arbre(){
+			element.sort(function(){return Math.round(Math.random());});
+			i = element.pop();
+			// console.log(i.id);
+			$("#"+i.id).remove();
+			$("#m"+i.id).remove();
+
+		}
+
+		function plante_un_arbre(){
+			id++;
+			el_temp = new Element3D("el"+id);
+			el_temp.place( Math.random()*10000,window.innerHeight/2, Math.random()*10000);
+			element.push(el_temp);
+			if(id>30) tue_un_arbre();
+			map.draw_element(element);
+			window.setTimeout(plante_un_arbre,500);
+
+		}
+
+		var map = new map("map");	
+
+
+		m3D.init(map,element);
+
+		map.draw_element(element);
+
+		var moi = new Element3D("moi");
+		moi.place(5000 ,0,5000);
+
+		map.draw_element([moi]);
+
+		m3D.init(map,element);
+		
+		$("div[id^='mel']").click(function(){
+			console.log(this.id);
+			console.log(m3D.getPosition(this.id));
+			$("div[id^='el']").css("background","#f00");
+			// $("div[id^='mel']").css("background","#ff0");
+			// $("#"+this.id).css("background","#f0f");
+			$("#"+this.id.replace("m","")).css("background","#0f0");
+		});
+
+		// plante_un_arbre();
+	</script>
+</body>
+</html>

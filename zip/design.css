@@ -1,0 +1,157 @@
+body
+{
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#contenu
+{
+	max-width: 1024px;
+}
+
+/* Tableau en utilisant table */
+table
+{
+    border-spacing: 0;
+	color: #186A81;
+	width: 100%;
+}
+
+
+tr:nth-child(odd) 
+{
+    background-color: #D7F7FF; 
+}
+tr:nth-child(even)
+{
+    background-color: #E5FDFF;
+}
+
+th
+{
+    background-color: #4BABC6; 
+    color: #FFFFFF; 
+}
+
+tr
+{
+	line-height: 1.4em;
+	width: 100%;
+}
+
+tr:hover td
+{
+    background-color: #FCFDFF; 
+    color: #084354;
+}
+
+td, th
+{
+	padding: 5px 2% 5px 2%;
+	min-width: 70px;
+}
+
+
+
+/*  Tableau en utilisant div/table-cell */
+div
+{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+}
+#tc_table
+{
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	min-width: 320px;
+}
+
+.tc_row
+{
+	display: table-row;
+	width: 100%;
+}
+
+.tc_impair:hover .tc_cell, .tc_pair:hover .tc_cell
+{
+    background-color: #FCFDFF; 
+    color: #084354;
+}
+
+.tc_cell,.tc_cellH
+{
+	display: table-cell;
+	padding: 5px 2% 5px 2%;
+	min-width: 70px;
+	width: 25%;
+}
+
+.tc_cell
+{
+	color: #186A81;
+}
+
+.tc_th
+{
+    background-color: #4BABC6; 
+    color: #FFFFFF; 
+	font-weight: bold;
+}
+
+.tc_impair
+{
+    background-color: #E5FDFF;
+}
+
+.tc_pair
+{
+    background-color: #D7F7FF; 
+}
+
+/*  Tableau en utilisant div/inline-block */
+
+
+.ib_table
+{
+	display: block;
+}
+
+.ib_row
+{
+	display: block;
+}
+
+.ib_cell, .ib_cellH
+{
+	display: inline-block;
+	padding: 5px 2% 5px 2%;
+	width: 24%;
+	min-width: 70px;
+}
+
+.ib_cell
+{
+	color: #186A81;
+}
+
+.ib_th
+{
+    background-color: #4BABC6; 
+    color: #FFFFFF; 
+	font-weight: bold;
+}
+
+.ib_impair
+{
+    background-color: #E5FDFF;
+}
+
+.ib_pair
+{
+    background-color: #D7F7FF; 
+}
+/*.ib_impair:hover .ib_cell, .ib_pair:hover .ib_cell
+{
+    background-color: #FCFDFF; 
+    color: #084354;
+}*/
