@@ -869,7 +869,8 @@ bombe.physique = function() {
 
 function mort(){
 	console.log("VOUS ETE MORT !!! ");
-
+	controls.enabled = false;
+	$("#deadzone").show();
 }
 init();
 animate();
