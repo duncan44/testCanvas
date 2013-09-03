@@ -36,7 +36,7 @@ if(isset($_GET['bombe'])){
 			array_push($joueurs,array(
 							"bombe"=>$joueur['name'],
 							"ttl"=>$joueur['param'],
-							"last_update"=>$joueur['ttl2'],
+							"last_update"=>$joueur['ttl2'],							
 							"position"=>array(
 									"x"=>$joueur['x'],
 									"y"=>$joueur['y'],
